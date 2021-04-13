@@ -1,0 +1,15 @@
+{
+  "extends": ["react-app", "react-app/jest", "plugin:prettier/recommended", "eslint:recommended", "prettier"],
+  "plugins": ["prettier"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2020": true
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "prettier/prettier": "warn",
+    "prefer-const": "warn",
+    "no-unused-vars": "warn"
+  }
+}
