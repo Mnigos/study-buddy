@@ -9,7 +9,7 @@ const UsersList = () => (
           <div>{average}</div>
           <div>
             <p>{name}</p>
-            <p>{average}</p>
+            <p>{attendance}</p>
           </div>
           <button>X</button>
         </li>
