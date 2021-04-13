@@ -19,7 +19,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,json,jsx,css,scss,md}": [
-      "eslint"
+      "prettier --write"
     ]
   },
   "husky": {
