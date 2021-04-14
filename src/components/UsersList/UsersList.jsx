@@ -6,7 +6,6 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
   background-color: #181818;
   display: flex;
-  justify-content: center;
   align-items: center;
   width: 30%;
   padding: 30px;
@@ -14,13 +13,19 @@ const Wrapper = styled.div`
   color: #fff;
 `
 
+const StyledList = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+`
+
 const UsersList = () => (
   <Wrapper>
-    <ul>
+    <StyledList>
       {users.map((user, i) => (
         <UsersListItem userData={user} key={i} />
       ))}
-    </ul>
+    </StyledList>
   </Wrapper>
 )
 
