@@ -5,8 +5,8 @@ import UsersListItem from 'components/UsersListItem/UsersListItem'
 const UsersList = () => (
   <div>
     <ul>
-      {users.map(user => (
-        <UsersListItem userData={user} />
+      {users.map((user, i) => (
+        <UsersListItem userData={user} key={i} />
       ))}
     </ul>
   </div>
