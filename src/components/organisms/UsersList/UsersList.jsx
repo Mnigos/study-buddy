@@ -2,8 +2,6 @@ import { Component } from 'react'
 import { users } from 'data/users'
 import UsersListItem from 'components/molecules/UsersListItem/UsersListItem'
 import { StyledList, StyledTitle, Wrapper } from './UsersList.style'
-import { Button } from 'components/atoms/Button/Button'
-import FormField from 'components/molecules/FormField/FormField'
 
 function mockAPI() {
   return new Promise((resolve, reject) => {
@@ -17,9 +15,6 @@ function mockAPI() {
 class UsersList extends Component {
   state = {
     users: [],
-    nameValue: '',
-    attendanceValue: '',
-    averageValue: '',
     isLoading: false,
   }
 
@@ -38,46 +33,9 @@ class UsersList extends Component {
     this.setState({ users: filteredUsers })
   }
 
-  addUser = e => {
-    e.preventDefault()
-
-    const newUser = {
-      name: this.state.nameValue,
-      attendance: this.state.attendanceValue,
-      average: this.state.averageValue,
-    }
-
-    this.setState({ users: [...this.state.users, newUser] })
-  }
-
   render() {
     return (
       <>
-        <Wrapper as="form" onSubmit={this.addUser}>
-          <StyledTitle>Add new User</StyledTitle>
-          <FormField
-            label="Name"
-            id="name"
-            name="name"
-            value={this.state.nameValue}
-            onChange={e => this.setState({ nameValue: e.target.value })}
-          />
-          <FormField
-            label="Attendance"
-            id="attendance"
-            name="attendance"
-            value={this.state.attendanceValue}
-            onChange={e => this.setState({ attendanceValue: e.target.value })}
-          />
-          <FormField
-            label="Average"
-            id="average"
-            name="average"
-            value={this.state.averageValue}
-            onChange={e => this.setState({ averageValue: e.target.value })}
-          />
-          <Button type="submit">Add</Button>
-        </Wrapper>
         <Wrapper>
           <StyledTitle>
             {this.state.isLoading ? 'Loading...' : 'Users List'}
