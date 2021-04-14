@@ -38,33 +38,45 @@ class UsersList extends Component {
     this.setState({ users: filteredUsers })
   }
 
+  addUser = e => {
+    e.preventDefault()
+
+    const newUser = {
+      name: this.state.nameValue,
+      attendance: this.state.attendanceValue,
+      average: this.state.averageValue,
+    }
+
+    this.setState({ users: [...this.state.users, newUser] })
+  }
+
   render() {
     return (
       <>
-        <Wrapper>
+        <Wrapper as="form" onSubmit={this.addUser}>
           <StyledTitle>Add new User</StyledTitle>
           <FormField
             label="Name"
             id="name"
             name="name"
-            value={this.nameValue}
-            onChange={e => this.setState({ nameValue: e })}
+            value={this.state.nameValue}
+            onChange={e => this.setState({ nameValue: e.target.value })}
           />
           <FormField
             label="Attendance"
             id="attendance"
             name="attendance"
-            value={this.attendanceValue}
-            onChange={e => this.setState({ attendanceValue: e })}
+            value={this.state.attendanceValue}
+            onChange={e => this.setState({ attendanceValue: e.target.value })}
           />
           <FormField
             label="Average"
             id="average"
             name="average"
-            value={this.averageValue}
-            onChange={e => this.setState({ averageValue: e })}
+            value={this.state.averageValue}
+            onChange={e => this.setState({ averageValue: e.target.value })}
           />
-          <Button>Add</Button>
+          <Button type="submit">Add</Button>
         </Wrapper>
         <Wrapper>
           <StyledTitle>
