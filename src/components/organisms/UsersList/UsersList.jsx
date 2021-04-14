@@ -1,7 +1,8 @@
 import { Component } from 'react'
 import { users } from 'data/users'
 import UsersListItem from 'components/molecules/UsersListItem/UsersListItem'
-import { StyledList, Wrapper } from './UsersList.style'
+import { StyledList, StyledTitle, Wrapper } from './UsersList.style'
+import FormField from 'components/molecules/FormField/FormField'
 
 function mockAPI() {
   return new Promise((resolve, reject) => {
@@ -35,18 +36,28 @@ class UsersList extends Component {
 
   render() {
     return (
-      <Wrapper>
-        <h1>{this.state.isLoading ? 'Loading...' : 'Users List'}</h1>
-        <StyledList>
-          {this.state.users.map((user, i) => (
-            <UsersListItem
-              deleteUser={this.deleteUser}
-              userData={user}
-              key={i}
-            />
-          ))}
-        </StyledList>
-      </Wrapper>
+      <>
+        <Wrapper>
+          <StyledTitle>Add new User</StyledTitle>
+          <FormField label="Name" id="name" name="name" />
+          <FormField label="Attendance" id="attendance" name="attendance" />
+          <FormField label="Average" id="average" name="average" />
+        </Wrapper>
+        <Wrapper>
+          <StyledTitle>
+            {this.state.isLoading ? 'Loading...' : 'Users List'}
+          </StyledTitle>
+          <StyledList>
+            {this.state.users.map((user, i) => (
+              <UsersListItem
+                deleteUser={this.deleteUser}
+                userData={user}
+                key={i}
+              />
+            ))}
+          </StyledList>
+        </Wrapper>
+      </>
     )
   }
 }
