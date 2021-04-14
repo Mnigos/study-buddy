@@ -1,5 +1,5 @@
-import { GlobalStyle } from 'assets/styles/globalStyles'
-import UsersList from 'components/UsersList/UsersList'
+import { GlobalStyle } from 'assets/styles/globalStyle'
+import UsersList from 'components/organisms/UsersList/UsersList'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
