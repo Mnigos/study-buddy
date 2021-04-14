@@ -14,6 +14,6 @@ export const Wrapper = styled.div`
     if (value > 4) return theme.colors.success
     if (value > 3) return theme.colors.warning
     if (value > 2) return theme.colors.error
-    return console.log(value)
+    return theme.colors.darkGrey
   }};
 `
