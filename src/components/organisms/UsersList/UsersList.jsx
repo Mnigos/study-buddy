@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   align-items: center;
   width: 30%;
   padding: 30px;
-  border-radius: 30px;
+  border-radius: 15px;
   color: #fff;
 `
 
