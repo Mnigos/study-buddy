@@ -3,7 +3,8 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.darkerGrey};
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   max-width: 450px;
   padding: 30px;
