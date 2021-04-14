@@ -1,9 +1,10 @@
 import { GlobalStyle } from 'assets/styles/globalStyle'
 import UsersList from 'components/organisms/UsersList/UsersList'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
+import { theme } from 'assets/styles/theme'
 
 const Wrapper = styled.div`
-  background-color: #202020;
+  background-color: ${({ theme }) => theme.colors.darkGrey};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,12 +14,12 @@ const Wrapper = styled.div`
 `
 
 const App = () => (
-  <>
+  <ThemeProvider theme={theme}>
     <GlobalStyle />
     <Wrapper>
       <UsersList />
     </Wrapper>
-  </>
+  </ThemeProvider>
 )
 
 export default App

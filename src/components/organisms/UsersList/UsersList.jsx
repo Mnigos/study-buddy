@@ -4,7 +4,7 @@ import UsersListItem from 'components/molecules/UsersListItem/UsersListItem'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  background-color: #181818;
+  background-color: ${({ theme }) => theme.colors.darkerGrey};
   display: flex;
   align-items: center;
   width: 30%;
