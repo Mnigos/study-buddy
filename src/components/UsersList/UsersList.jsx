@@ -1,15 +1,27 @@
 import React from 'react'
 import { users } from 'data/users'
 import UsersListItem from 'components/UsersListItem/UsersListItem'
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+  background-color: #181818;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  padding: 30px;
+  border-radius: 30px;
+  color: #fff;
+`
 
 const UsersList = () => (
-  <div>
+  <Wrapper>
     <ul>
       {users.map((user, i) => (
         <UsersListItem userData={user} key={i} />
       ))}
     </ul>
-  </div>
+  </Wrapper>
 )
 
 export default UsersList
