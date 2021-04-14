@@ -2,6 +2,7 @@ import { Component } from 'react'
 import { users } from 'data/users'
 import UsersListItem from 'components/molecules/UsersListItem/UsersListItem'
 import { StyledList, StyledTitle, Wrapper } from './UsersList.style'
+import { Button } from 'components/atoms/Button/Button'
 import FormField from 'components/molecules/FormField/FormField'
 
 function mockAPI() {
@@ -42,6 +43,7 @@ class UsersList extends Component {
           <FormField label="Name" id="name" name="name" />
           <FormField label="Attendance" id="attendance" name="attendance" />
           <FormField label="Average" id="average" name="average" />
+          <Button>Add</Button>
         </Wrapper>
         <Wrapper>
           <StyledTitle>
