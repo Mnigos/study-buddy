@@ -1,58 +1,30 @@
-import { Component } from 'react'
-import { users } from 'data/users'
+import React from 'react'
+import PropTypes from 'prop-types'
 import UsersListItem from 'components/molecules/UsersListItem/UsersListItem'
-import { StyledList, StyledTitle, Wrapper } from './UsersList.style'
+import { StyledList } from './UsersList.style'
+import { UserShape } from 'types'
+import { Title } from 'components/atoms/Title/Title'
 
-function mockAPI() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (users) resolve([...users])
-      else reject({ message: 'err' })
-    }, 500)
-  })
+const UsersList = ({ users, deleteUser }) => {
+  return (
+    <>
+      <Title>Students list</Title>
+      <StyledList>
+        {users.map(userData => (
+          <UsersListItem
+            deleteUser={deleteUser}
+            key={userData.name}
+            userData={userData}
+          />
+        ))}
+      </StyledList>
+    </>
+  )
 }
 
-class UsersList extends Component {
-  state = {
-    users: [],
-    isLoading: false,
-  }
-
-  componentDidMount() {
-    this.setState({ isLoading: true })
-    mockAPI()
-      .then(data => {
-        this.setState({ users: data })
-        this.setState({ isLoading: false })
-      })
-      .catch(err => console.log(err))
-  }
-
-  deleteUser = name => {
-    const filteredUsers = this.state.users.filter(user => user.name !== name)
-    this.setState({ users: filteredUsers })
-  }
-
-  render() {
-    return (
-      <>
-        <Wrapper>
-          <StyledTitle>
-            {this.state.isLoading ? 'Loading...' : 'Users List'}
-          </StyledTitle>
-          <StyledList>
-            {this.state.users.map((user, i) => (
-              <UsersListItem
-                deleteUser={this.deleteUser}
-                userData={user}
-                key={i}
-              />
-            ))}
-          </StyledList>
-        </Wrapper>
-      </>
-    )
-  }
+UsersList.propTypes = {
+  users: PropTypes.arrayOf(PropTypes.shape(UserShape)),
+  deleteUser: PropTypes.func,
 }
 
 export default UsersList
