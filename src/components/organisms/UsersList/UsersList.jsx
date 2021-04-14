@@ -17,6 +17,9 @@ function mockAPI() {
 class UsersList extends Component {
   state = {
     users: [],
+    nameValue: '',
+    attendanceValue: '',
+    averageValue: '',
     isLoading: false,
   }
 
@@ -40,9 +43,27 @@ class UsersList extends Component {
       <>
         <Wrapper>
           <StyledTitle>Add new User</StyledTitle>
-          <FormField label="Name" id="name" name="name" />
-          <FormField label="Attendance" id="attendance" name="attendance" />
-          <FormField label="Average" id="average" name="average" />
+          <FormField
+            label="Name"
+            id="name"
+            name="name"
+            value={this.nameValue}
+            onChange={e => this.setState({ nameValue: e })}
+          />
+          <FormField
+            label="Attendance"
+            id="attendance"
+            name="attendance"
+            value={this.attendanceValue}
+            onChange={e => this.setState({ attendanceValue: e })}
+          />
+          <FormField
+            label="Average"
+            id="average"
+            name="average"
+            value={this.averageValue}
+            onChange={e => this.setState({ averageValue: e })}
+          />
           <Button>Add</Button>
         </Wrapper>
         <Wrapper>
