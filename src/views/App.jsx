@@ -1,3 +1,4 @@
+import { GlobalStyle } from 'assets/styles/globalStyles'
 import UsersList from 'components/UsersList/UsersList'
 import styled from 'styled-components'
 
@@ -12,9 +13,12 @@ const Wrapper = styled.div`
 `
 
 const App = () => (
-  <Wrapper>
-    <UsersList />
-  </Wrapper>
+  <>
+    <GlobalStyle />
+    <Wrapper>
+      <UsersList />
+    </Wrapper>
+  </>
 )
 
 export default App
