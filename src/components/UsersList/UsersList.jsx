@@ -1,23 +1,15 @@
 import React from 'react'
 import { users } from 'data/users'
+import UsersListItem from 'components/UsersListItem/UsersListItem'
 
 const UsersList = () => (
   <div>
     <ul>
-      {users.map(({ name, average, attendance }) => (
-        <li>
-          <div>{average}</div>
-          <div>
-            <p>{name}</p>
-            <p>{attendance}</p>
-          </div>
-          <button>X</button>
-        </li>
+      {users.map(user => (
+        <UsersListItem userData={user} />
       ))}
     </ul>
   </div>
 )
-
-UsersList.propTypes = {}
 
 export default UsersList
