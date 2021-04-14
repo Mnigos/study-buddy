@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Button from 'components/atoms/Button/Button'
+import Average from 'components/atoms/Average/Average'
 
 const Wrapper = styled.li`
   display: flex;
@@ -20,7 +21,7 @@ const Wrapper = styled.li`
 
 const UsersListItem = ({ userData: { average, name, attendance = '0%' } }) => (
   <Wrapper>
-    <div>{average}</div>
+    <Average value={average} />
     <div>
       <p>{name}</p>
       <p>{attendance}</p>
