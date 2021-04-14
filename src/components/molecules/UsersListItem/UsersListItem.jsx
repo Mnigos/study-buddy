@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Button from 'components/atoms/Button/Button'
+import Button from 'components/atoms/IconButton/IconButton'
 import Average from 'components/atoms/Average/Average'
 import { Wrapper, StyledInfo } from './UsersListItem.style'
 
