@@ -4,11 +4,11 @@ import UsersList from 'components/organisms/UsersList/UsersList'
 import { UsersContext } from './App'
 
 const Dashboard = () => {
-  const { users, deleteUser } = useContext(UsersContext)
+  const { users } = useContext(UsersContext)
 
   return (
     <ViewWrapper>
-      <UsersList users={users} deleteUser={deleteUser} />
+      <UsersList users={users} />
     </ViewWrapper>
   )
 }
