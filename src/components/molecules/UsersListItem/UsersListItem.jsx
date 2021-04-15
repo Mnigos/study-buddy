@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Button from 'components/atoms/IconButton/IconButton'
 import Average from 'components/atoms/Average/Average'
 import { Wrapper, StyledInfo } from './UsersListItem.style'
+import { UserShape } from 'types'
 
 const UsersListItem = ({
   deleteUser,
@@ -19,11 +20,7 @@ const UsersListItem = ({
 )
 
 UsersListItem.propTypes = {
-  userData: PropTypes.shape({
-    average: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    attendance: PropTypes.string,
-  }),
+  userData: PropTypes.shape(UserShape),
   deleteUser: PropTypes.func,
 }
 
