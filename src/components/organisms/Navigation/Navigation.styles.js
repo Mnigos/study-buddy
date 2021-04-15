@@ -37,6 +37,7 @@ export const StyledLink = styled(NavLink).attrs({ activeClassName })`
   text-align: right;
   margin: 15px 20px 15px auto;
   position: relative;
+
   &.${activeClassName} {
     &::after {
       opacity: 1;
@@ -52,6 +53,6 @@ export const StyledLink = styled(NavLink).attrs({ activeClassName })`
     top: 50%;
     transform: translateY(-50%);
     right: -20px;
-    background-color: ${({ theme }) => theme.colors.darkPurple};
+    background-color: ${({ theme }) => theme.colors.darkGrey};
   }
 `
