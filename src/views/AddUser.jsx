@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useReducer, useContext } from 'react'
 import FormField from 'components/molecules/FormField/FormField'
 import { Button } from 'components/atoms/Button/Button'
 import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper'
@@ -9,24 +9,57 @@ const initialFormState = {
   name: '',
   attendance: '',
   average: '',
+  consent: false,
+  error: '',
+}
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'INPUT CHANGE':
+      return {
+        ...state,
+        [action.field]: action.value,
+      }
+    case 'CLEAR VALUES':
+      return initialFormState
+    case 'CONSENT TOGGLE':
+      return {
+        ...state,
+        consent: !state.consent,
+      }
+    case 'THROW ERROR':
+      return {
+        ...state,
+        error: action.errorValue,
+      }
+    default:
+      return state
+  }
 }
 
 function AddUser() {
-  const [formValues, setFormValues] = useState(initialFormState)
+  const [formValues, dispatch] = useReducer(reducer, initialFormState)
   const { handleAddUser } = useContext(UsersContext)
 
   const handleInputChange = e => {
-    setFormValues({
-      ...formValues,
-      [e.target.name]: e.target.value,
+    dispatch({
+      type: 'INPUT CHANGE',
+      field: e.target.name,
+      value: e.target.value,
     })
   }
 
   const handleSubmitUser = e => {
     e.preventDefault()
 
+    if (!formValues.consent)
+      return dispatch({
+        type: 'THROW ERROR',
+        errorValue: 'You need to give consent',
+      })
+
     handleAddUser(formValues)
-    setFormValues(initialFormState)
+    dispatch({ type: 'CLEAR VALUES' })
   }
 
   return (
@@ -53,7 +86,16 @@ function AddUser() {
         value={formValues.average}
         onChange={handleInputChange}
       />
+      <FormField
+        label="Consent"
+        id="consent"
+        name="consent"
+        type="checkbox"
+        value={formValues.consent}
+        onChange={() => dispatch({ type: 'CONSENT TOGGLE' })}
+      />
       <Button type="submit">Add</Button>
+      <p>{formValues.error}</p>
     </ViewWrapper>
   )
 }
